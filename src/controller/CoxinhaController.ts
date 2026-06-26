@@ -3,7 +3,7 @@ import { TransacaoService } from "../service/TransacaoService";
 import type { CompraRequest } from "../dto/request/CompraRequest";
 import type { TrocaRequest } from "../dto/request/TrocaRequest";
 import type { EstornoRequest } from "../dto/request/EstornoRequest";
-import type { CompraResponse } from "../dto/response/CompreResponse";
+import type { CompraResponse } from "../dto/response/CompraResponse";
 import type { SaboresParaTrocaResponse } from "../dto/response/PrecoCatalogoResponse";
 import type { PrecoCatalogoItemResponse } from "../dto/response/PrecoCatalogoResponse";
 
@@ -12,6 +12,11 @@ import type { PrecoCatalogoItemResponse } from "../dto/response/PrecoCatalogoRes
 export class CoxinhaController extends Controller {
     constructor(private transacaoService: TransacaoService = new TransacaoService()) {
         super();
+    }
+
+    @Get("sabores")
+    public async listarSabores(): Promise<string[]> {
+        return ["frango", "catupiry", "carne", "queijo"];
     }
 
     @Post("comprar")

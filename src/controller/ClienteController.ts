@@ -2,7 +2,7 @@ import { Route, Post, Get, Body, Path, Controller, Tags } from "tsoa";
 import { ClienteService } from "../service/ClienteService";
 import { TransacaoService } from "../service/TransacaoService";
 import type { CreditoRequest } from "../dto/request/CreditoRequest";
-import type { CompraResponse } from "../dto/response/CompreResponse";
+import type { CompraResponse } from "../dto/response/CompraResponse";
 import type { ClienteResponse } from "../dto/response/ClienteResponse";
 import type { SaldoResponse } from "../dto/response/ClienteResponse";
 import type { MovimentacaoResponse } from "../dto/response/MovimentacaoResponse";

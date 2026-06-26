@@ -15,7 +15,7 @@ export class ComprarCoxinhaComando implements Comando {
         private clienteId: number,
         private sabor: string,
         private valorNota: Denominacao
-    ) {}
+    ) { }
 
     async executar(): Promise<ResultadoCompra> {
         const { clienteService, precoService, subject } = this.ctx;
@@ -102,7 +102,8 @@ export class ComprarCoxinhaComando implements Comando {
             sucesso: true,
             mensagem: "Compra realizada com sucesso",
             sabor: coxinha.getSabor(),
-            precoFinal,
+            precoPago: precoFinal,
+            trocoDado: valorTroco,
             trocoEntregue,
             saldoAtual: novoSaldo,
             estado: pedido.estadoAtual,
