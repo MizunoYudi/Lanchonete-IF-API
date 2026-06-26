@@ -1,0 +1,48 @@
+{
+  "name": "lanchoneteif-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:routes": "tsoa spec-and-routes",
+    "dev": "npm run build:routes && ts-node-dev --respawn src/server.ts",
+    "build": "npm run build:routes && npx prisma generate && tsc",
+    "start": "node dist/src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TPII-LanchoneteIF/LanchoneteIF-API.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/TPII-LanchoneteIF/LanchoneteIF-API/issues"
+  },
+  "homepage": "https://github.com/TPII-LanchoneteIF/LanchoneteIF-API#readme",
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.8.0",
+    "@prisma/client": "^7.8.0",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "pg": "^8.22.0",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.0.0",
+    "@types/pg": "^8.20.0",
+    "@types/swagger-ui-express": "^4.1.8",
+    "prisma": "^7.8.0",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "tsoa": "^7.0.0-alpha.0",
+    "typescript": "^6.0.3"
+  }
+}

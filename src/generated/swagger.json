@@ -1,0 +1,1041 @@
+{
+	"openapi": "3.0.0",
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"EstoqueItemResponse": {
+				"properties": {
+					"nota": {
+						"type": "number",
+						"format": "double"
+					},
+					"quantidade": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"nota",
+					"quantidade"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"EstoqueResponse": {
+				"properties": {
+					"totalNotas": {
+						"type": "number",
+						"format": "double"
+					},
+					"totalValor": {
+						"type": "number",
+						"format": "double"
+					},
+					"itens": {
+						"items": {
+							"$ref": "#/components/schemas/EstoqueItemResponse"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"totalNotas",
+					"totalValor",
+					"itens"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"AdicionarNotasResponse": {
+				"properties": {
+					"sucesso": {
+						"type": "boolean"
+					},
+					"mensagem": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"sucesso",
+					"mensagem"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"AdicionarNotasRequest": {
+				"properties": {
+					"nota": {
+						"type": "number",
+						"format": "double"
+					},
+					"quantidade": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"nota",
+					"quantidade"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"PromocaoResponse": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"sabor": {
+						"type": "string"
+					},
+					"desconto": {
+						"type": "number",
+						"format": "double"
+					},
+					"ativo": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"id",
+					"sabor",
+					"desconto",
+					"ativo"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"PromocaoResultadoResponse": {
+				"properties": {
+					"sucesso": {
+						"type": "boolean"
+					},
+					"mensagem": {
+						"type": "string"
+					},
+					"promocao": {
+						"$ref": "#/components/schemas/PromocaoResponse"
+					}
+				},
+				"required": [
+					"sucesso",
+					"mensagem"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CriarPromocaoRequest": {
+				"properties": {
+					"sabor": {
+						"type": "string"
+					},
+					"desconto": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"sabor"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"AtualizarPromocaoRequest": {
+				"properties": {
+					"desconto": {
+						"type": "number",
+						"format": "double"
+					},
+					"ativo": {
+						"type": "boolean"
+					}
+				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CompraResponse": {
+				"properties": {
+					"sucesso": {
+						"type": "boolean"
+					},
+					"mensagem": {
+						"type": "string"
+					},
+					"sabor": {
+						"type": "string"
+					},
+					"precoPago": {
+						"type": "number",
+						"format": "double"
+					},
+					"trocoDado": {
+						"type": "number",
+						"format": "double"
+					},
+					"reembolso": {
+						"type": "number",
+						"format": "double"
+					},
+					"saldoAtual": {
+						"type": "number",
+						"format": "double"
+					},
+					"estado": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"sucesso",
+					"mensagem"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CompraRequest": {
+				"properties": {
+					"clienteId": {
+						"type": "number",
+						"format": "double"
+					},
+					"sabor": {
+						"type": "string"
+					},
+					"valorNota": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"clienteId",
+					"sabor",
+					"valorNota"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TrocaRequest": {
+				"properties": {
+					"clienteId": {
+						"type": "number",
+						"format": "double"
+					},
+					"saborNovo": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"clienteId",
+					"saborNovo"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"EstornoRequest": {
+				"properties": {
+					"clienteId": {
+						"type": "number",
+						"format": "double"
+					},
+					"movimentacaoId": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"clienteId",
+					"movimentacaoId"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"PrecoCatalogoItemResponse": {
+				"properties": {
+					"sabor": {
+						"type": "string"
+					},
+					"precoBase": {
+						"type": "number",
+						"format": "double"
+					},
+					"precoFinal": {
+						"type": "number",
+						"format": "double"
+					},
+					"emPromocao": {
+						"type": "boolean"
+					},
+					"desconto": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"sabor",
+					"precoBase",
+					"precoFinal",
+					"emPromocao",
+					"desconto"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SaborParaTrocaResponse": {
+				"properties": {
+					"sabor": {
+						"type": "string"
+					},
+					"preco": {
+						"type": "number",
+						"format": "double"
+					},
+					"diferenca": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"sabor",
+					"preco",
+					"diferenca"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SaboresParaTrocaResponse": {
+				"properties": {
+					"saborAtual": {
+						"type": "string"
+					},
+					"precoAtual": {
+						"type": "number",
+						"format": "double"
+					},
+					"sabores": {
+						"items": {
+							"$ref": "#/components/schemas/SaborParaTrocaResponse"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"sabores"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ClienteResponse": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"nome": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"saldo": {
+						"type": "number",
+						"format": "double"
+					},
+					"ultimaSaborGuardado": {
+						"type": "string",
+						"nullable": true
+					}
+				},
+				"required": [
+					"id",
+					"nome",
+					"email",
+					"saldo",
+					"ultimaSaborGuardado"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LoginRequest": {
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"senha": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"email",
+					"senha"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"RegistroRequest": {
+				"properties": {
+					"nome": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"senha": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"nome",
+					"email",
+					"senha"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SaldoResponse": {
+				"properties": {
+					"clienteId": {
+						"type": "number",
+						"format": "double"
+					},
+					"saldo": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"clienteId",
+					"saldo"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"CreditoRequest": {
+				"properties": {
+					"clienteId": {
+						"type": "number",
+						"format": "double"
+					},
+					"valorNota": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"clienteId",
+					"valorNota"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"MovimentacaoResponse": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"clienteId": {
+						"type": "number",
+						"format": "double"
+					},
+					"dataHora": {
+						"type": "string"
+					},
+					"valorNota": {
+						"type": "number",
+						"format": "double"
+					},
+					"tipoSabor": {
+						"type": "string"
+					},
+					"tipoOperacao": {
+						"type": "string"
+					},
+					"trocoDado": {
+						"type": "number",
+						"format": "double"
+					},
+					"reembolso": {
+						"type": "number",
+						"format": "double"
+					},
+					"estado": {
+						"type": "string"
+					},
+					"estornada": {
+						"type": "boolean"
+					},
+					"referenciaId": {
+						"type": "number",
+						"format": "double",
+						"nullable": true
+					}
+				},
+				"required": [
+					"id",
+					"clienteId",
+					"dataHora",
+					"valorNota",
+					"tipoSabor",
+					"tipoOperacao",
+					"trocoDado",
+					"reembolso",
+					"estado",
+					"estornada",
+					"referenciaId"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {}
+	},
+	"info": {
+		"title": "Coxinha API",
+		"version": "1.0.0",
+		"description": "API do sistema de troca de notas por coxinha",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {}
+	},
+	"paths": {
+		"/slot/estoque": {
+			"get": {
+				"operationId": "ObterEstoque",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/EstoqueResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Slot de Notas"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/slot/estoque/adicionar": {
+			"post": {
+				"operationId": "AdicionarNotas",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/AdicionarNotasResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Slot de Notas"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/AdicionarNotasRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/promocao/listar": {
+			"get": {
+				"operationId": "Listar",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/PromocaoResponse"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Promoção"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/promocao/criar": {
+			"post": {
+				"operationId": "Criar",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PromocaoResultadoResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Promoção"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CriarPromocaoRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/promocao/{sabor}": {
+			"put": {
+				"operationId": "Atualizar",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PromocaoResultadoResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Promoção"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "sabor",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/AtualizarPromocaoRequest"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "Remover",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PromocaoResultadoResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Promoção"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "sabor",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/coxinha/comprar": {
+			"post": {
+				"operationId": "Comprar",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/CompraResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Coxinha"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CompraRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/coxinha/trocar": {
+			"post": {
+				"operationId": "Trocar",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/CompraResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Coxinha"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/TrocaRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/coxinha/estornar": {
+			"post": {
+				"operationId": "Estornar",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/CompraResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Coxinha"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/EstornoRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/coxinha/precos": {
+			"get": {
+				"operationId": "ListarPrecos",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/PrecoCatalogoItemResponse"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Coxinha"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/coxinha/sabores-para-troca/{clienteId}": {
+			"get": {
+				"operationId": "ListarSaboresParaTroca",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SaboresParaTrocaResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Coxinha"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "clienteId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/cliente/login": {
+			"post": {
+				"operationId": "Login",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ClienteResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Cliente"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/LoginRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/cliente/registrar": {
+			"post": {
+				"operationId": "Registrar",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ClienteResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Cliente"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/RegistroRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/cliente/{id}": {
+			"get": {
+				"operationId": "Obter",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ClienteResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Cliente"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/cliente/{id}/saldo": {
+			"get": {
+				"operationId": "ObterSaldo",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SaldoResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Cliente"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/cliente/credito": {
+			"post": {
+				"operationId": "InserirCredito",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/CompraResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Cliente"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/CreditoRequest"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/cliente/{id}/extrato": {
+			"get": {
+				"operationId": "ObterExtrato",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/MovimentacaoResponse"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Cliente"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/api"
+		}
+	]
+}

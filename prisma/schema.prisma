@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Cliente {
+  id                Int            @id @default(autoincrement())
+  nome              String
+  email             String         @unique
+  senhaHash         String         @map("senha_hash")
+  saldo             Decimal        @default(0) @db.Decimal(10, 2)
+  ultimaSaborGuardado String?      @map("ultima_sabor_guardado")
+  movimentacoes     Movimentacao[]
+  @@map("cliente")
+}
+
+enum TipoOperacao {
+  COMPRA
+  TROCA_SABOR
+  CREDITO
+  ESTORNO
+}
+
+model Movimentacao {
+  id           Int          @id @default(autoincrement())
+  clienteId    Int          @map("cliente_id")
+  cliente      Cliente      @relation(fields: [clienteId], references: [id])
+  dataHora     DateTime     @default(now()) @map("data_hora")
+  valorNota    Decimal      @map("valor_nota") @db.Decimal(10, 2)
+  tipoSabor    String       @map("tipo_sabor")
+  tipoOperacao TipoOperacao @map("tipo_operacao")
+  trocoDado    Decimal      @default(0) @map("troco_dado") @db.Decimal(10, 2)
+  // Reembolso creditado ao saldo (troca p/ mais barata e estorno)
+  reembolso    Decimal      @default(0) @map("reembolso") @db.Decimal(10, 2)
+  // Estado final do pedido (pattern State) registrado para o extrato
+  estado       String?      @map("estado")
+  // Controle de estorno: marca a compra original e referencia o lançamento de estorno
+  estornada    Boolean      @default(false) @map("estornada")
+  referenciaId Int?         @map("referencia_id")
+  @@map("movimentacao")
+}
+
+model SlotNotas {
+  valorNota  Int @id @map("valor_nota")
+  quantidade Int @default(10)
+  @@map("slot_notas")
+}
+
+model Promocao {
+  id        Int     @id @default(autoincrement())
+  sabor     String  @unique
+  desconto  Decimal @default(0.1) @db.Decimal(3, 2)
+  ativo     Boolean @default(true)
+  @@map("promocao")
+}
